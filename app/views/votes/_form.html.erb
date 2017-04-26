@@ -1,0 +1,31 @@
+  <p><% @setting=Setting.last %></p>
+<%if @setting.start_time < Time.now && @setting.end_time > Time.now %> 
+<% if ! Vote.where(:user_id=>current_user.id).present?%>
+<%= form_for(vote) do |f| %>
+  <% if vote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+
+      <ul>
+      <% vote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+
+  <p>
+    <%= f.select(:candidate_id, Candidate.all.collect {|u| [u.name, u.id]}, :prompt => 'Select Candidate') %>
+    
+  </p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% else %>
+<p>you are already voted</p>
+<% end%>
+<% else%>
+voting expired
+<% end %>

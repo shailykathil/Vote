@@ -1,0 +1,12 @@
+<table>
+<tr>
+	<th>Congress</th>
+	<th>BJP</th>
+	<th>AAP</th>
+</tr>
+<tr>
+<td><%= Vote.where(:candidate_id=>1).count %></td>
+<td><%= Vote.where(:candidate_id=>2).count %></td>
+<td><%= Vote.where(:candidate_id=>3).count %></td>
+</tr>
+</table>

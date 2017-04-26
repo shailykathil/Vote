@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <% @vote.user_id %>
+   <% user=User.find(@vote.user_id) %>
+   <%= user.email%>
+   
+</p>
+
+<p>
+  <strong>Candidate:</strong>
+  <% @vote.candidate_id %>
+  <% candidate=Candidate.find(@vote.candidate_id) %>
+
+  <%= candidate.name%>
+</p>
+
+
+<%= link_to 'Back', votes_path %>
